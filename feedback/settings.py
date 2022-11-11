@@ -45,7 +45,8 @@ THIRD_APPS = []
 
 PROJECT_APPS = [
     'apps.accounts.apps.AccountsConfig',
-    'apps.comments.apps.CommentsConfig'
+    'apps.comments.apps.CommentsConfig',
+    'apps.home.apps.HomeConfig',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_APPS + PROJECT_APPS
