@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %} {{ block.super }} {% endblock %}
+
+{% block body %}
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">{% trans 'Learn how to evolve' %}</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">
+            {% trans 'Sign up and receive feedback to evolve.' %}
+        </h5>
+      </div>
+      <div class="row center">
+        <a href="http://materializecss.com/getting-started.html"
+           id="download-button"
+           class="btn-large waves-effect waves-light orange">{% trans 'Create an Account' %}</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">account_box</i></h2>
+            <h5 class="center">{% trans 'Create an Account' %}</h5>
+
+            <p class="light">
+                {% trans 'To receive feedback you need an account. Fill out your profile, share and ask for feedback.' %}
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">{% trans 'Get Feedback' %}</h5>
+
+            <p class="light">
+                {% trans 'Get about yourself and send feedback to people who matter.' %}
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">{% trans 'Receive Notifications' %}</h5>
+
+            <p class="light">
+                {% trans 'With each new feedback received you will receive notifications.' %}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+{% endblock %}

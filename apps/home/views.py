@@ -3,7 +3,7 @@ from django.views import generic
 
 
 class HomeView(generic.TemplateView):
-    template_name = 'base.html'
+    template_name = 'home/index.html'
 
 #     def get(self, request):
 #         return render(request, 'base.html', {})

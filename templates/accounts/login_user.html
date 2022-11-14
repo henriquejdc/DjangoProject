@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static i18n widget_tweaks %}
+
+{% block title %}
+    {{ block.super }} - {% trans 'Login' %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1>{% trans 'Login' %}</h1>
+            <div class="row">
+                <div class="col s12">
+                    <h5>{% trans 'Please, enter username and password!' %}</h5>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="row">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                </div>
+
+                <form class="col s12" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ form.username|add_class:'validate' }}
+                            <label for="{{ form.username.id_for_label }}">{% trans 'Username' %}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            {{ form.password|add_class:'validate'|attr:"type:password" }}
+                            <label for="{{ form.password.id_for_label }}">{% trans 'Password' %}</label>
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit">
+                        {% trans 'Submit' %}
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

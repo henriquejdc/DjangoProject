@@ -4,7 +4,11 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>{% trans 'Feedback App' %}</title>
+  <title>
+      {% block title %}
+            {% trans 'Feedback App' %}
+      {% endblock %}
+  </title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,79 +19,21 @@
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">{% trans 'Feedback App' %}</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">{% trans 'Create an Account' %}</a></li>
-        <li><a href="#">{% trans 'Login' %}</a></li>
+        <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
+        <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">{% trans 'Create an Account' %}</a></li>
-        <li><a href="#">{% trans 'Login' %}</a></li>
+        <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
+        <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">{% trans 'Learn how to evolve' %}</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">
-            {% trans 'Sign up and receive feedback to evolve.' %}
-        </h5>
-      </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html"
-           id="download-button"
-           class="btn-large waves-effect waves-light orange">{% trans 'Create an Account' %}</a>
-      </div>
-      <br><br>
 
-    </div>
-  </div>
+  {% block body %}
 
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">account_box</i></h2>
-            <h5 class="center">{% trans 'Create an Account' %}</h5>
-
-            <p class="light">
-                {% trans 'To receive feedback you need an account. Fill out your profile, share and ask for feedback.' %}
-            </p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">{% trans 'Get Feedback' %}</h5>
-
-            <p class="light">
-                {% trans 'Get about yourself and send feedback to people who matter.' %}
-            </p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">{% trans 'Receive Notifications' %}</h5>
-
-            <p class="light">
-                {% trans 'With each new feedback received you will receive notifications.' %}
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br><br>
-  </div>
+  {% endblock %}
 
   <footer class="page-footer orange">
     <div class="container">
@@ -98,7 +44,6 @@
               {% trans 'Feedback app has the purpose to make people evolve.' %}
               {% trans 'Where people can receive feedback for personal development anonymously.' %}
           </p>
-
 
         </div>
         <div class="col l3 s12">

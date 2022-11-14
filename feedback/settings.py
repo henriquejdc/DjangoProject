@@ -41,7 +41,9 @@ DEFAULT_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_APPS = []
+THIRD_APPS = [
+    'widget_tweaks'
+]
 
 PROJECT_APPS = [
     'apps.accounts.apps.AccountsConfig',

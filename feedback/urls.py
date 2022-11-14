@@ -3,8 +3,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from apps.accounts import urls as accounts_urls
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include(accounts_urls, namespace='accounts')),
     path('', include('apps.home.urls', namespace='home')),
 ]
 
