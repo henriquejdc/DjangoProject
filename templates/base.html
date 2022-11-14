@@ -1,10 +1,136 @@
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>{% trans 'Feedback App' %}</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-    Initial Home
-</body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">{% trans 'Feedback App' %}</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">{% trans 'Create an Account' %}</a></li>
+        <li><a href="#">{% trans 'Login' %}</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">{% trans 'Create an Account' %}</a></li>
+        <li><a href="#">{% trans 'Login' %}</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">{% trans 'Learn how to evolve' %}</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">
+            {% trans 'Sign up and receive feedback to evolve.' %}
+        </h5>
+      </div>
+      <div class="row center">
+        <a href="http://materializecss.com/getting-started.html"
+           id="download-button"
+           class="btn-large waves-effect waves-light orange">{% trans 'Create an Account' %}</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">account_box</i></h2>
+            <h5 class="center">{% trans 'Create an Account' %}</h5>
+
+            <p class="light">
+                {% trans 'To receive feedback you need an account. Fill out your profile, share and ask for feedback.' %}
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">{% trans 'Get Feedback' %}</h5>
+
+            <p class="light">
+                {% trans 'Get about yourself and send feedback to people who matter.' %}
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">{% trans 'Receive Notifications' %}</h5>
+
+            <p class="light">
+                {% trans 'With each new feedback received you will receive notifications.' %}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">{% trans 'Feedback App' %}</h5>
+          <p class="grey-text text-lighten-4">
+              {% trans 'Feedback app has the purpose to make people evolve.' %}
+              {% trans 'Where people can receive feedback for personal development anonymously.' %}
+          </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">{% trans 'Know More' %}</h5>
+          <ul>
+            <li><a class="white-text" href="#!">{% trans 'Resources' %}</a></li>
+            <li><a class="white-text" href="#!">{% trans 'Benefit' %}</a></li>
+            <li><a class="white-text" href="#!">{% trans 'About' %}</a></li>
+            <li><a class="white-text" href="#!">{% trans 'FAQ' %}</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">{% trans 'Contact' %}</h5>
+          <ul>
+            <li>{% trans 'Phone' %}: (49) 99988-7766</li>
+            <li>{% trans 'Email' %}: riquejdc@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://henriquejdc.com.br">Henriquejdc</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+
+  </body>
 </html>
