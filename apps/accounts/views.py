@@ -9,6 +9,9 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 
 
+from .forms import ProfileForm
+
+
 # class AddUserCreateView(SuccessMessageMixin, CreateView):
 class AddUserCreateView(CreateView):
     model = User
@@ -48,6 +51,28 @@ class UserLogin(LoginView):
         if user:
             login(request, user)
             messages.success(request, _('Login sucessfully!'))
-            return redirect('accounts:login_user')
+            return redirect('accounts:dashboard')
         messages.error(request, _('Error, invalid login!'))
         return redirect('accounts:login_user')
+
+
+def dashboard(request):
+    template_name = 'accounts/dashboard.html'
+    return render(request, template_name, {})
+
+
+def create_profile(request):
+    template_name = 'accounts/profile.html'
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.user = request.user
+            f.save()
+            messages.success(request, _('Profile successfully saved.'))
+            return redirect('accounts:dashboard')
+
+    context = {
+        'form': ProfileForm()
+    }
+    return render(request, template_name, context)

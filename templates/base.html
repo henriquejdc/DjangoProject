@@ -1,81 +1,93 @@
 {% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>
-      {% block title %}
-            {% trans 'Feedback App' %}
-      {% endblock %}
-  </title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>
+            {% block title %}
+                {% trans 'Feedback App' %}
+            {% endblock %}
+        </title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">{% trans 'Feedback App' %}</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
-        <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
-      </ul>
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    </head>
+    <body>
+        <nav class="light-blue lighten-1" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">{% trans 'Feedback App' %}</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
+                    <li><a href="{% url 'accounts:create_profile' %} ">{% trans 'Create Profile' %}</a></li>
+                    <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
+                </ul>
 
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
-        <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
+                <ul id="nav-mobile" class="sidenav">
+                    <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
+                    <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
 
-  {% block body %}
+        {% block body %}
 
-  {% endblock %}
+        {% endblock %}
 
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">{% trans 'Feedback App' %}</h5>
-          <p class="grey-text text-lighten-4">
-              {% trans 'Feedback app has the purpose to make people evolve.' %}
-              {% trans 'Where people can receive feedback for personal development anonymously.' %}
-          </p>
+        <footer class="page-footer orange">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">{% trans 'Feedback App' %}</h5>
+                        <p class="grey-text text-lighten-4">
+                            {% trans 'Feedback app has the purpose to make people evolve.' %}
+                            {% trans 'Where people can receive feedback for personal development anonymously.' %}
+                        </p>
 
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">{% trans 'Know More' %}</h5>
-          <ul>
-            <li><a class="white-text" href="#!">{% trans 'Resources' %}</a></li>
-            <li><a class="white-text" href="#!">{% trans 'Benefit' %}</a></li>
-            <li><a class="white-text" href="#!">{% trans 'About' %}</a></li>
-            <li><a class="white-text" href="#!">{% trans 'FAQ' %}</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">{% trans 'Contact' %}</h5>
-          <ul>
-            <li>{% trans 'Phone' %}: (49) 99988-7766</li>
-            <li>{% trans 'Email' %}: riquejdc@gmail.com</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://henriquejdc.com.br">Henriquejdc</a>
-      </div>
-    </div>
-  </footer>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">{% trans 'Know More' %}</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">{% trans 'Resources' %}</a></li>
+                            <li><a class="white-text" href="#!">{% trans 'Benefit' %}</a></li>
+                            <li><a class="white-text" href="#!">{% trans 'About' %}</a></li>
+                            <li><a class="white-text" href="#!">{% trans 'FAQ' %}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">{% trans 'Contact' %}</h5>
+                        <ul>
+                            <li>{% trans 'Phone' %}: (49) 99988-7766</li>
+                            <li>{% trans 'Email' %}: riquejdc@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Made by <a class="orange-text text-lighten-3" href="http://henriquejdc.com.br">Henriquejdc</a>
+                </div>
+            </div>
+        </footer>
 
 
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{% static 'js/materialize.js' %}"></script>
-  <script src="{% static 'js/init.js' %}"></script>
-
-  </body>
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{% static 'js/materialize.js' %}"></script>
+        <script src="{% static 'js/init.js' %}"></script>
+        <script>
+            let dateObj = new Date()
+             $(document).ready(function(){
+                $('select').formSelect();
+             });
+             $(document).ready(function(){
+                $('.datepicker').datepicker({
+                    yearRange: [1900, dateObj.getFullYear()],
+                    format: 'dd/mm/yyyy'
+                });
+             });
+        </script>
+    </body>
 </html>

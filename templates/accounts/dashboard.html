@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static i18n widget_tweaks %}
+
+{% block title %}
+    {{ block.super }} - {% trans 'Dashboard' %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1>{% trans 'Dashboard' %}</h1>
+            <div class="row">
+                <div class="col s12">
+                    <h5>{% trans 'Olá, Seja Bem Vindo!' %}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

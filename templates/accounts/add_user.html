@@ -20,6 +20,10 @@
                     {% endfor %}
                 {% endif %}
 
+                {% if form.erros %}
+                    {{ form.non_field_errors }}
+                {% endif %}
+
                 <form class="col s12" method="post">
                     {% csrf_token %}
                     <div class="row">
