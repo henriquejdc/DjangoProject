@@ -4,11 +4,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from apps.accounts import urls as accounts_urls
+from apps.comments import urls as comments_urls
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include(accounts_urls, namespace='accounts')),
+    path('comments/', include(comments_urls, namespace='comments')),
     path('', include('apps.home.urls', namespace='home')),
 ]
 

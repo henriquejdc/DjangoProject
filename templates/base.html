@@ -17,16 +17,26 @@
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">{% trans 'Feedback App' %}</a>
+            <div class="nav-wrapper container"><a id="logo-container" href="{% url 'accounts:dashboard' %}" class="brand-logo">{% trans 'Feedback App' %}</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
-                    <li><a href="{% url 'accounts:create_profile' %} ">{% trans 'Create Profile' %}</a></li>
-                    <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'accounts:dashboard' %}">{% trans 'Dashboard' %}</a></li>
+                        <li><a href="{% url 'accounts:create_profile' %}">{% trans 'Profile' %}</a></li>
+                        <li><a href="{% url 'accounts:login_user' %}">{% trans 'Logout' %}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
+                        <li><a href="{% url 'accounts:logout_user' %}">{% trans 'Login' %}</a></li>
+                    {% endif %}
                 </ul>
-
                 <ul id="nav-mobile" class="sidenav">
-                    <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
-                    <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'accounts:dashboard' %}">{% trans 'Dashboard' %}</a></li>
+                        <li><a href="{% url 'accounts:create_profile' %}">{% trans 'Profile' %}</a></li>
+                        <li><a href="{% url 'accounts:logout_user' %}">{% trans 'Logout' %}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'accounts:add_user' %}">{% trans 'Create an Account' %}</a></li>
+                        <li><a href="{% url 'accounts:login_user' %}">{% trans 'Login' %}</a></li>
+                    {% endif %}
                 </ul>
                 <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             </div>

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 # from django.contrib.messages.views import SuccessMessageMixin
@@ -48,7 +49,7 @@ class UserLogin(LoginView):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
-        if user:
+        if user.is_authenticated:
             login(request, user)
             messages.success(request, _('Login sucessfully!'))
             return redirect('accounts:dashboard')
@@ -56,11 +57,13 @@ class UserLogin(LoginView):
         return redirect('accounts:login_user')
 
 
+@login_required
 def dashboard(request):
     template_name = 'accounts/dashboard.html'
     return render(request, template_name, {})
 
 
+@login_required
 def create_profile(request):
     template_name = 'accounts/profile.html'
     if request.method == 'POST':
@@ -76,3 +79,9 @@ def create_profile(request):
         'form': ProfileForm()
     }
     return render(request, template_name, context)
+
+
+@login_required
+def logout_user(request):
+    logout(request)
+    return redirect('accounts:login_user')

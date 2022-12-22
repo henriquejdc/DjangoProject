@@ -1,6 +1,20 @@
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+
+
+class ProfileManager(models.Manager):
+
+    def search(self, query):
+        qs = self.get_queryset()
+        if query:
+            or_lookup = (
+                Q(user__first_name=query) | Q(user__last_name=query) | Q(user__username__icontains=query)
+            )
+            qs = qs.filter(or_lookup)
+            print(qs)
+        return qs
 
 
 class Profile(models.Model):
@@ -18,6 +32,8 @@ class Profile(models.Model):
         null=True
     )
     cell_phone = models.CharField(_('Cellphone'), max_length=14, blank=True)
+
+    objects = ProfileManager()
 
     class Meta:
         ordering = ['id']
