@@ -11,6 +11,7 @@ from django.urls import reverse_lazy
 
 
 from .forms import ProfileForm
+from ..comments.models import Comment
 
 
 # class AddUserCreateView(SuccessMessageMixin, CreateView):
@@ -60,7 +61,11 @@ class UserLogin(LoginView):
 @login_required
 def dashboard(request):
     template_name = 'accounts/dashboard.html'
-    return render(request, template_name, {})
+    context = {
+        'comments_unread': Comment.objects.filter(read=False, user=request.user).order_by('-id'),
+        'comments_read': Comment.objects.filter(read=True, user=request.user).order_by('-id')
+    }
+    return render(request, template_name, context)
 
 
 @login_required

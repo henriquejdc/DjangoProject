@@ -1,6 +1,8 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
+from apps.comments.models import Comment
+
 
 class SearchForm(forms.Form):
     query = forms.CharField(
@@ -10,3 +12,10 @@ class SearchForm(forms.Form):
             'autofocus': 'autofocus'
         })
     )
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['circle', 'comment']

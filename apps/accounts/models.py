@@ -13,7 +13,6 @@ class ProfileManager(models.Manager):
                 Q(user__first_name=query) | Q(user__last_name=query) | Q(user__username__icontains=query)
             )
             qs = qs.filter(or_lookup)
-            print(qs)
         return qs
 
 
@@ -42,3 +41,11 @@ class Profile(models.Model):
 
     def __str__(self):
         return "{} - {}".format(self.pk, self.user.username)
+
+    @property
+    def get_full_name(self):
+        return self.user.get_full_name()
+
+    @property
+    def get_username(self):
+        return self.user.username

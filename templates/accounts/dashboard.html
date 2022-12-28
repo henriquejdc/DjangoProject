@@ -13,6 +13,83 @@
             <div class="row">
                 <div class="col s12">
                     <h5>{% trans 'Olá, Seja Bem Vindo!' %}</h5>
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a href="#unread">{% trans 'Unread' %}</a></li>
+                        <li class="tab col s3"><a href="#read">{% trans 'Read' %}</a></li>
+                    </ul>
+                    <div id="unread" class="col s12">
+                        <table class="highlight responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>{% trans 'Feedback' %}</th>
+                                    <th>{% trans 'Circle' %}</th>
+                                    <th>{% trans 'Datetime' %}</th>
+                                    <th colspan="2">{% trans 'Actions' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for comment in comments_unread %}
+                                    <tr>
+                                        <td>{{ comment.comment|truncatewords:4 }}</td>
+                                        <td>{{ comment.circle }}</td>
+                                        <td>{{ comment.created_at }}</td>
+                                        <td>
+                                            <a href="{% url 'comments:comment_details' comment.pk %}"
+                                               title="{% trans 'View' %}">
+                                                <i class="material-icons" >add_circle</i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'comments:comment_details' comment.pk %}"
+                                               title="{% trans 'Delete' %}">
+                                                <i class="material-icons">cancel</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="read" class="col s12">
+                        <table class="highlight responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>{% trans 'Feedback' %}</th>
+                                    <th>{% trans 'Circle' %}</th>
+                                    <th>{% trans 'Datetime' %}</th>
+                                    <th colspan="2">{% trans 'Actions' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for comment in comments_read %}
+                                    <tr>
+                                        <td>{{ comment.comment|truncatewords:4 }}</td>
+                                        <td>{{ comment.circle }}</td>
+                                        <td>{{ comment.created_at }}</td>
+                                        <td>
+                                            <a href="{% url 'comments:comment_details' comment.pk %}"
+                                               title="{% trans 'View' %}">
+                                                <i class="material-icons" >add_circle</i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'comments:comment_details' comment.pk %}"
+                                               title="{% trans 'Delete' %}">
+                                                <i class="material-icons">cancel</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

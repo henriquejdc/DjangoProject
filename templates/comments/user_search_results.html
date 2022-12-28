@@ -3,15 +3,15 @@
 {% load static i18n widget_tweaks %}
 
 {% block title %}
-    {{ block.super }} - {% trans 'Search Result' %}
+    {{ block.super }} - {% trans 'Search Result Profiles' %}
 {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h1>{% trans 'Search Result' %}</h1>
-                <table>
+                <h1>{% trans 'Search Result Profiles' %}</h1>
+                <table class="highlight responsive-table">
                     <thead>
                         <tr>
                             <th>{% trans 'Name' %}</th>
@@ -22,14 +22,22 @@
                         {% for profile in profiles %}
                             <tr>
                                 <td>
-                                    <div class="col s12">
-                                        <img
-                                                src="{{ profile.photo.url }}"
-                                                alt="{% trans 'Photo' %} {{ profile.get_full_name }}">
+                                    <div class="col s2">
+                                        <a
+                                        href="{% url 'comments:get_user_profile_add_comment' profile.get_username %}">
+                                            <img    width="30" height="30"
+                                                    class="circle responsive"
+                                                    src="{{ profile.photo.url }}"
+                                                    alt="{% trans 'Photo' %} {{ profile.get_full_name }}">
+                                        </a>
                                     </div>
-                                    {{ profile.get_full_name }}
+                                    <a href="{% url 'comments:get_user_profile_add_comment' profile.get_username %}">
+                                        {{ profile.get_full_name }}</a>
                                 </td>
-                                <td>{{ profile.get_username }}</td>
+                                <td>
+                                    <a href="{% url 'comments:get_user_profile_add_comment' profile.get_username %}">
+                                        {{ profile.get_username }}</a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>

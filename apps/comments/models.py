@@ -20,6 +20,7 @@ class Comment(models.Model):
     circle = models.ForeignKey(Circle, on_delete=models.CASCADE, verbose_name=_('Circle'))
     comment = models.TextField(_('Comment'))
     created_at = models.DateTimeField(auto_now_add=True)
+    read = models.BooleanField(_('Read'), default=False)
 
     class Meta:
         ordering = ['id']

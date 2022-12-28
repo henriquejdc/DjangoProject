@@ -21,6 +21,7 @@
                 <ul class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'accounts:dashboard' %}">{% trans 'Dashboard' %}</a></li>
+                        <li><a href="{% url 'comments:comments_home' %}">{% trans 'Give feedbacks' %}</a></li>
                         <li><a href="{% url 'accounts:create_profile' %}">{% trans 'Profile' %}</a></li>
                         <li><a href="{% url 'accounts:login_user' %}">{% trans 'Logout' %}</a></li>
                     {% else %}
@@ -97,6 +98,9 @@
                     yearRange: [1900, dateObj.getFullYear()],
                     format: 'dd/mm/yyyy'
                 });
+             });
+             $(document).ready(function(){
+                $('.tabs').tabs();
              });
         </script>
     </body>

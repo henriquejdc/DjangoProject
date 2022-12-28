@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static i18n widget_tweaks %}
+
+{% block title %}
+    {{ block.super }} - {% trans 'Feedback Details' %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h4>{% trans 'View feedback details' %}</h4>
+                {% if messages %}
+                    {% for message in messages %}
+                        <h5></h5>
+                    {% endfor %}
+                {% else %}
+                    <div class="col s12">
+                        <table class="highlight responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>{% trans 'Feedback' %}</th>
+                                    <td>{{ comment.comment }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{% trans 'Datetime' %}</th>
+                                    <td>{{ comment.created_at }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{% trans 'Circle' %}</th>
+                                    <td>{{ comment.circle }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{% trans 'Actions' %}</th>
+                                    <td>
+{#                                        <a href="{% url '' comment.id %}">{% trans 'Unread' %}</a><br>#}
+{#                                        <a href="{% url '' comment.id %}">{% trans 'Delete' %}</a><br>#}
+                                        <a href="{% url 'accounts:dashboard' %}">
+                                            <i class="material-icons">dvr</i> {% trans 'Dashboard' %}
+                                        </a>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                {% endif %}
+                <div class="col s12">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
