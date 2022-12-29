@@ -1,7 +1,12 @@
+import requests
+
 from django import forms
 from django.utils.translation import gettext_lazy as _
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.conf import settings
 
-from apps.comments.models import Comment
+from apps.comments.models import Comment, Circle
 
 
 class SearchForm(forms.Form):
@@ -19,3 +24,8 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['circle', 'comment']
+
+    def send_email(self, form, recipients: list, template_email):
+        subject = _('New Feedback Received!')
+        message = render_to_string(template_email, {'circle': form.cleaned_data['circle'].name})
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, recipients)

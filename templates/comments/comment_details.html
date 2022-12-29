@@ -33,10 +33,24 @@
                                 </tr>
                                 <tr>
                                     <th>{% trans 'Actions' %}</th>
-                                    <td>
-{#                                        <a href="{% url '' comment.id %}">{% trans 'Unread' %}</a><br>#}
-{#                                        <a href="{% url '' comment.id %}">{% trans 'Delete' %}</a><br>#}
-                                        <a href="{% url 'accounts:dashboard' %}">
+                                    <td style="padding-left: 3%; width: 33%">
+                                        <a href="{% url 'comments:mark_unread' comment.id %}"
+                                           title="{% trans 'Unread' %}"
+                                           class="btn waves-effect waves-light green">
+                                            <i class="material-icons">markunread</i> {% trans 'Unread' %}
+                                        </a>
+                                    </td>
+                                    <td style="padding-left: 3%; width: 33%">
+                                        <a href="{% url 'comments:delete_comment' comment.id %}"
+                                           title="{% trans 'Delete' %}"
+                                           class="btn waves-effect waves-light red">
+                                            <i class="material-icons">cancel</i> {% trans 'Delete' %}
+                                        </a>
+                                    </td>
+                                    <td style="padding-left: 3%; width: 30%">
+                                        <a href="{% url 'accounts:dashboard' %}"
+                                           title="{% trans 'Dashboard' %}"
+                                           class="btn waves-effect waves-light blue">
                                             <i class="material-icons">dvr</i> {% trans 'Dashboard' %}
                                         </a>
                                     </td>

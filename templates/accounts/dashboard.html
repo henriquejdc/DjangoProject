@@ -12,7 +12,7 @@
             <h1>{% trans 'Dashboard' %}</h1>
             <div class="row">
                 <div class="col s12">
-                    <h5>{% trans 'Olá, Seja Bem Vindo!' %}</h5>
+                    <h5>{% trans 'Olá, Seja Bem Vindo' %} {{ request.user.get_full_name }}!</h5>
                     {% if messages %}
                         {% for message in messages %}
                             {{ message }}
@@ -47,7 +47,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{% url 'comments:comment_details' comment.pk %}"
+                                            <a href="{% url 'comments:delete_comment' comment.id %}"
                                                title="{% trans 'Delete' %}">
                                                 <i class="material-icons">cancel</i>
                                             </a>
@@ -80,7 +80,13 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{% url 'comments:comment_details' comment.pk %}"
+                                            <a href="{% url 'comments:mark_unread' comment.pk %}"
+                                               title="{% trans 'Unread' %}">
+                                                <i class="material-icons" >markunread</i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'comments:delete_comment' comment.id %}"
                                                title="{% trans 'Delete' %}">
                                                 <i class="material-icons">cancel</i>
                                             </a>
@@ -93,5 +99,17 @@
                 </div>
             </div>
         </div>
+        <p>
+            {% trans 'Click on the button below to copy the link to your profile and share it on social media.' %}
+        </p>
+        <input
+                readonly
+                id="profile"
+                type="text"
+                value="Hi, send me anonymous feedback, please! {{ request.scheme }}://{{ request.get_host }}{% url 'comments:get_user_profile_add_comment' request.user.username %}"/>
+        <button data-clipboard-target="#profile"
+                class="btn waves-effect waves-light btn-copy-profile">
+            {% trans 'Copy text and profile link' %}</button>
     </div>
+    <br>
 {% endblock %}
